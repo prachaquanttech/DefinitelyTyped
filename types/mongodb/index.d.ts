@@ -559,19 +559,19 @@ export interface Collection<TSchema = Default> {
     initializeUnorderedBulkOp(options?: CollectionOptions): UnorderedBulkOperation;
     //http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html#insertOne
     /** @deprecated Use insertOne, insertMany or bulkWrite */
-    insert(docs: Object, callback: MongoCallback<InsertOneWriteOpResult>): void;
+    insert(docs: TSchema, callback: MongoCallback<InsertOneWriteOpResult>): void;
     /** @deprecated Use insertOne, insertMany or bulkWrite */
-    insert(docs: Object, options?: CollectionInsertOneOptions): Promise<InsertOneWriteOpResult>;
+    insert(docs: TSchema, options?: CollectionInsertOneOptions): Promise<InsertOneWriteOpResult>;
     /** @deprecated Use insertOne, insertMany or bulkWrite */
-    insert(docs: Object, options: CollectionInsertOneOptions, callback: MongoCallback<InsertOneWriteOpResult>): void;
+    insert(docs: TSchema, options: CollectionInsertOneOptions, callback: MongoCallback<InsertOneWriteOpResult>): void;
     //http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html#insertMany
-    insertMany(docs: Object[], callback: MongoCallback<InsertWriteOpResult>): void;
-    insertMany(docs: Object[], options?: CollectionInsertManyOptions): Promise<InsertWriteOpResult>;
-    insertMany(docs: Object[], options: CollectionInsertManyOptions, callback: MongoCallback<InsertWriteOpResult>): void;
+    insertMany(docs: TSchema[], callback: MongoCallback<InsertWriteOpResult>): void;
+    insertMany(docs: TSchema[], options?: CollectionInsertManyOptions): Promise<InsertWriteOpResult>;
+    insertMany(docs: TSchema[], options: CollectionInsertManyOptions, callback: MongoCallback<InsertWriteOpResult>): void;
     //http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html#insertOne
-    insertOne(docs: Object, callback: MongoCallback<InsertOneWriteOpResult>): void;
-    insertOne(docs: Object, options?: CollectionInsertOneOptions): Promise<InsertOneWriteOpResult>;
-    insertOne(docs: Object, options: CollectionInsertOneOptions, callback: MongoCallback<InsertOneWriteOpResult>): void;
+    insertOne(docs: TSchema, callback: MongoCallback<InsertOneWriteOpResult>): void;
+    insertOne(docs: TSchema, options?: CollectionInsertOneOptions): Promise<InsertOneWriteOpResult>;
+    insertOne(docs: TSchema, options: CollectionInsertOneOptions, callback: MongoCallback<InsertOneWriteOpResult>): void;
     //http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html#isCapped
     isCapped(): Promise<any>;
     isCapped(callback: MongoCallback<any>): void;
@@ -603,16 +603,16 @@ export interface Collection<TSchema = Default> {
     rename(newName: string, options?: { dropTarget?: boolean }): Promise<Collection<TSchema>>;
     rename(newName: string, options: { dropTarget?: boolean }, callback: MongoCallback<Collection<TSchema>>): void;
     //http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#replaceOne
-    replaceOne(filter: Object, doc: Object, callback: MongoCallback<UpdateWriteOpResult & { ops: Array<any> }>): void;
-    replaceOne(filter: Object, doc: Object, options?: ReplaceOneOptions): Promise<UpdateWriteOpResult & { ops: Array<any> }>;
-    replaceOne(filter: Object, doc: Object, options: ReplaceOneOptions, callback: MongoCallback<UpdateWriteOpResult & { ops: Array<any> }>): void;
+    replaceOne(filter: Object, doc: TSchema, callback: MongoCallback<UpdateWriteOpResult & { ops: Array<any> }>): void;
+    replaceOne(filter: Object, doc: TSchema, options?: ReplaceOneOptions): Promise<UpdateWriteOpResult & { ops: Array<any> }>;
+    replaceOne(filter: Object, doc: TSchema, options: ReplaceOneOptions, callback: MongoCallback<UpdateWriteOpResult & { ops: Array<any> }>): void;
     //http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html#save
     /** @deprecated Use insertOne, insertMany, updateOne or updateMany */
-    save(doc: Object, callback: MongoCallback<WriteOpResult>): void;
+    save(doc: TSchema, callback: MongoCallback<WriteOpResult>): void;
     /** @deprecated Use insertOne, insertMany, updateOne or updateMany */
-    save(doc: Object, options?: CollectionOptions): Promise<WriteOpResult>;
+    save(doc: TSchema, options?: CollectionOptions): Promise<WriteOpResult>;
     /** @deprecated Use insertOne, insertMany, updateOne or updateMany */
-    save(doc: Object, options: CollectionOptions, callback: MongoCallback<WriteOpResult>): void;
+    save(doc: TSchema, options: CollectionOptions, callback: MongoCallback<WriteOpResult>): void;
     //http://mongodb.github.io/node-mongodb-native/2.1/api/Collection.html#stats
     stats(callback: MongoCallback<CollStats>): void;
     stats(options?: { scale: number }): Promise<CollStats>;
